@@ -1,0 +1,290 @@
+@charset "UTF-8";
+* {
+    padding: 0;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+body {
+    min-height: 100%;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+}
+
+a, area {
+    outline: 0;
+    blr: expression(this.onFocus=this.blur());
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dropDown-menu {
+    display: none;
+    transition: all .3s ease 0s;
+}
+
+.box-shadow {
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.radius {
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.cl:after, .clearfix:after {
+    content: "\20";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden
+}
+
+.cl, .clearfix {
+    zoom: 1
+}
+
+.row {
+    box-sizing: border-box
+}
+
+/*4.3 下拉菜单
+	Name:			mod_dropDown
+	Example:		<span class="dropDown "><a class="dropDown_A" href="#">下拉菜单</a><span class="dropDown-menu box-shadow"><ul><li><a href="#">菜单一</a></li><li><a href="#">菜单二</a></li></ul></span>span>
+	Explain:		如需要在不同的地方显示不同的样式，请在<span class="dropDown"> 追加class，采用覆盖的方式重写默认样式。
+
+*/
+.dropDown {
+    display: inline-block
+}
+
+.dropDown_A {
+    display: inline-block
+}
+
+.dropDown_A i {
+    transition-duration: 0.3s;
+    transition-property: all
+}
+
+.dropDown-menu {
+    display: none;
+    transition: all 0.3s ease 0s
+}
+
+.dropDown:focus, .dropDown-menu:focus {
+    outline: 0
+}
+
+.dropDown-menu li.arrow {
+    position: absolute;
+    display: block;
+    width: 12px;
+    height: 8px;
+    margin-top: -13px;
+    margin-left: 20%;
+    line-height: 0;
+    background: url(../adminimg/icon-jt.png) no-repeat 0 0
+}
+
+/*鼠标经过*/
+.dropDown.hover .dropDown_A, .dropDown.open .dropDown_A {
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.2)
+}
+
+.dropDown.hover .dropDown_A i, .dropDown.open .dropDown_A i {
+    transform: rotate(180deg);
+    transition-duration: 0.3s;
+    transition-property: all;
+    _background-position: 0 0
+}
+
+/*打开菜单*/
+.dropDown.open {
+    position: relative;
+    z-index: 990
+}
+
+.dropDown.open .dropDown-menu {
+    position: absolute;
+    z-index: 1000;
+    display: inline-block;
+    top: 100%;
+    left: -1px;
+    min-width: 100%;
+    background-color: #fff;
+    border: solid 1px #f2f2f2
+}
+
+/*默认左对齐*/
+.dropDown.open .dropDown-menu.box-shadow {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0
+}
+
+.dropDown.open .dropDown-menu.radius {
+    border-top: none
+}
+
+/*右对齐*/
+.dropDown.open.right .dropDown-menu {
+    right: -1px !important;
+    left: auto !important
+}
+
+.dropDown.open .dropDown-menu li {
+    float: none;
+    display: inline
+}
+
+.dropDown-menu li a {
+    display: block;
+    clear: both;
+    border-bottom: solid 1px #f2f2f2;
+    margin-bottom: -1px;
+    padding: 0px 20px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    text-align: left;
+    font-weight: normal;
+    white-space: nowrap
+}
+
+.dropDown-menu li:last-child a {
+    border-bottom: none
+}
+
+.dropDown-menu li a:hover, .dropDown-menu li a:focus {
+    background-color: #f0f1f2;
+    text-decoration: none
+}
+
+/*禁用菜单*/
+.dropDown.open .dropDown-menu .disabled a, .dropDown.open .dropdown-menu .disabled a:hover, .dropDown.open .dropdown-menu .disabled a:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: no-drop;
+    background-color: transparent
+}
+
+.dropDown.open .dropDown-menu li.divider {
+    display: block;
+    height: 0px;
+    line-height: 0px;
+    margin: 9px 0;
+    overflow: hidden;
+    border-top: solid 1px #eee
+}
+
+.Hui-header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 44px;
+    z-index: 999;
+    background-color: #222;
+    color: #fff;
+}
+
+.Hui-userbar {
+    position: absolute;
+    top: 0px;
+    right: 20px;
+}
+
+.Hui-userbar > li {
+    float: left;
+    display: inline-block;
+    position: relative;
+    line-height: 44px;
+}
+
+.Hui-userbar > li > a {
+    color: #fff;
+    display: inline-block;
+    padding: 0 10px;
+    height: 44px;
+    line-height: 44px;
+}
+
+.Hui-aside {
+    position: absolute;
+    top: 44px;
+    bottom: 0;
+    left: 0;
+    padding-top: 10px;
+    width: 199px;
+    z-index: 99;
+    overflow: auto;
+    background-color: rgba(238, 238, 238, 0.98);
+    border-right: 1px solid #e5e5e5;
+}
+
+.Hui-aside .menu_dropdown dt {
+    color: #333;
+    display: block;
+    line-height: 35px;
+    padding-left: 15px;
+    cursor: pointer;
+    position: relative;
+    border-bottom: 1px solid #e5e5e5;
+    font-weight: normal;
+}
+
+.Hui-aside .menu_dropdown dd ul {
+    padding: 3px 8px;
+}
+
+.Hui-aside .menu_dropdown dd li {
+    line-height: 32px;
+    overflow: hidden;
+    zoom: 1;
+}
+
+.Hui-article-box {
+    position: absolute;
+    top: 44px;
+    right: 0;
+    bottom: 0;
+    left: 199px;
+    overflow: hidden;
+    z-index: 1;
+    background-color: #fff;
+}
+
+.Hui-tabNav {
+    height: 35px;
+    padding-right: 75px;
+    overflow: hidden;
+    position: relative;
+    background: #efeef0 url(img/acrossTab-2.png) repeat-x 0 -175px;
+}
+
+.acrossTab {
+    height: 29px;
+    background: url(img/acrossTab-bg.png) repeat-x 0 0;
+    padding-top: 1px;
+}
+
+.Hui-tabNav .acrossTab {
+    position: absolute;
+    height: 26px;
+    line-height: 26px;
+    background: none;
+    top: 8px;
+    left: 0;
+    padding-top: 0;
+}
+
+.Hui-tabNav .acrossTab li {
+    height: 26px;
+    line-height: 26px;
+}
